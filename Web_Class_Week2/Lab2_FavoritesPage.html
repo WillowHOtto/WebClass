@@ -5,24 +5,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Favorite Things</title>
 
     <!-- Link to the external CSS file (Using foldername/file name) -->
     <link rel="stylesheet" href="Styles/Style.css">
 </head>
 <body>
 
-    <h1>My Favorite Things</h1>
-    <h2>My Favorite Music</h2>
-    <p>One of my favorite musical artists is Sir Chloe!</p>
+        <h1 id="title-header">Some of My Favorite Things</h1>
 
-    <h2> Favorite Images </h2>
-    <img src="Images/Tamagotchi Collection.jpg" width="400" height="500" alt="Tamagotchi Collection">
-    <img src="Images/Nyx.jpg" width="500" height="500" alt="Dolls" alt="Black Cat Loafing">
+        <div class="fav-section">
+            <h2 id="fav-movie-header">Favorite Movie</h2>
+            <p>
+                My favorite movie is The <cite>Grand Budapest Hotel</cite>!
+            Learn more about it on
+            <a href="https://en.wikipedia.org/wiki/The_Grand_Budapest_Hotel" target="_blank">
+                The Grand Budapest Hotel
+            </a>
+            Wikipedia page.
+        </p>
+    </div>
+
+    <div class="fav-section">
+        <h2 id="fav-music-header">My Favorite Music</h2>
+        <p>
+            One of my favorite musical artists is <strong>Sir Chloe</strong>!
+            Read about her and the band
+            <a href="https://en.wikipedia.org/wiki/Sir_Chloe" target="_blank">here</a>.
+        </p>
+        <p>
+            Another favorite band of mine is <strong>Tele Novella</strong>.
+            Visit their
+            <a href="https://www.telenovella.world/" target="_blank">website</a>
+            to hear their new single!
+        </p>
+    </div>
+
+    <div class="fav-section">
+        <h2 id="fav-foods-header">Favorite Foods</h2>
+
+        <!-- Centered the list after googling how? -->
+        <ul style="display: table; margin: 0 auto;" id="favorite-foods-list">
+            <li>Alfredo</li>
+            <li>Sushi</li>
+            <li>Carbanara</li>
+        </ul>
+    </div>
+
+    <div class="fav-store-section">
+        <h2 id="fav-stores-header">Favorite Stores</h2>
+        <table> 
+            
+            <tr>
+                <th>Store Name</th>
+                <th>Location</th>
+                <th>Store Type</th>
+            </tr>
+            <tr>
+                <td>Hunt and Gather</td>
+                <td>Minneapolis, MN</td>
+                <td>Antique Store</td>
+            </tr>
+            <tr>
+                <td>Bath and Body Works</td>
+                <td>St Louis Park, MN</td>
+                <td>Specialty Store</td>
+            </tr>
+            <tr>
+                <td>Walmart</td>
+                <td>Eden Prairie, MN</td>
+                <td>General Store</td>
+            </tr>
+
+
+        </table>
+
+
+
+
+    </div>
+
+    <div class="fav-image-section">
+        <h2 id="fav-images-header">Favorite Images</h2>
+        <img src="Images/Tamagotchi Collection.jpg" width="400" height="500" alt="Tamagotchi Collection">
+        <img src="Images/Nyx.jpg" width="500" height="500" alt="Dolls" alt="Black Cat Loafing">
+    </div>
 
 </body>
 </html>
-
-
-
-

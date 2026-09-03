@@ -1,4 +1,108 @@
-
 body {
     background: rgb(232, 190, 197);
+    font-family: Courier, monospace;
+    text-align: center;
+    padding: 20px;
+
+}
+
+h1 {
+    color: rgb(69, 74, 129);
+    text-align: center;
+    font-size: 40px;
+}
+
+/* Style of my choice */
+h2 {
+    color: rgb(69, 74, 129);
+    text-align: center;
+    font-size: 30px;
+}
+
+p {
+    color: rgb(41, 41, 42);
+    text-align: center;
+}
+
+ul {
+    color: rgb(41, 41, 42);
+    background-color: rgb(221, 223, 247); width: 100px;
+    text-align: center;
+}
+
+li {
+    color: rgb(41, 41, 42);
+    text-align: center;
+}
+
+a {
+    background-color: rgb(221, 223, 247);
+}
+
+/* More complex styles */
+
+#favorite-foods-list {
+    border: 2px solid rgb(41, 41, 42);
+}
+
+#fav-movie-header {
+    text-decoration: underline;
+}
+
+#fav-music-header {
+    text-decoration: underline;
+}
+
+#fav-foods-header {
+    text-decoration: underline;
+}
+
+#fav-stores-header {
+    text-decoration: underline;
+}
+
+#fav-images-header {
+    text-decoration: underline;
+}
+
+#title-header {
+    text-align: center;
+    text-decoration: underline;
+    border: 2px solid rgb(41, 41, 42);
+    background-color: rgb(255, 248, 255);
+    width: 800px;
+    margin: 0 auto;
+}
+
+.fav-image-section {
+    background-color: rgb(255, 248, 255);
+    border: 2px solid grey;
+    padding: 20px;
+    margin: 20px auto;
+    width: 800px;
+
+}
+
+.fav-image-section img {
+    border-radius: 12px;
+    margin: 5px solid rgb(41, 41, 42);
+}
+
+.fav-store-section {
+    text-align: center;
+}
+
+
+.fav-store-section table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: rgb(221, 223, 247);
+    color: rgb(41, 41, 42);
+}
+
+.fav-store-section th,
+.fav-store-section td {
+    border: 2px solid rgb(41, 41, 42);
+    padding: 10px 20px;
+    text-align: center;
 }
