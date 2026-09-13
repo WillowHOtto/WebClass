@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Registration</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+
+
+    <!-- Bootstrap link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<!--Personal styles AFTER bootstrap-->
+ <link href="conference-styles.css" rel="stylesheet">
+
+</head>
+<body class="m-4 p-3">
+
+
+<!--Part 3: Bootstrap conference registration form (9pts)
+ Create a new web page for a conference registration form. It should have the following input fields with labels, and input validation:
+
+Your submit button doesn't need to do anything other than display validation messages when clicked. 
+
+CSS
+Add Bootstrap to your form to improve the appearance of the input and button elements.
+
+Add a Google Font of your choice to the whole page.-->
+
+  <div class="bg-light mb-3 p-3 rounded-5 text-center">
+  <h1>Welcome to the conference registration form! Please fill out the information below.</h1>
+  </div>
+
+
+  <div class="col">
+    <form class="m-2 p-2">
+
+    <div>
+      <label class="form-label" for="user-name">Enter your name: </label>
+      <input class="form-control" id="user-name" name="user-name" required maxlength="70" type="text">
+    </div>
+
+    <div>
+      <br>
+      <label class="form-label" for="user-email">Enter your email: </label>
+      <input class="form-control" id="user-email" name="user-email" required type="email">
+    </div>
+
+    <div>
+      <br>
+      <label class="form-label" for="user-password">Enter your password: </label>
+      <input class="form-control" id="user-password" name="user-password" required type="password">
+    </div>
+
+    <div>
+      <br>
+      <label class="form-option" for="tshirt-size">Select your t-shirt size: </label>
+      <select class="form-select" id="tshirt-size" name="tshirt-size" required>
+        <option value="">Select a size</option>
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+
+        </select>
+    </div>
+
+      <br>
+    <div>
+      <label class="form-label" for="date of birth">Enter your date of birth: </label>
+      <input class="form-control" id="date of birth" name="date of birth" required type="date">
+    </div>
+
+    <div>
+      <br>
+        <label class="form-label mx-2">Recieve email updates?</label>
+      <br>
+
+      <div class="form-check">
+        <input class="form-check-input" id="yes-emails" name="email-updates" type="radio">
+        <label class="form-check-label" for="yes-emails">Yes</label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" id="no-emails" name="email-updates" type="radio">
+        <label class="form-check-label" for="no-emails">No</label>
+      </div>
+    </div>
+
+      <p class="form-label">Select the sessions you will attend:</p>
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="session-morning" name="sessions" value="morning">
+        <label class="form-check-label" for="session-morning">Morning Session</label>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="session-afternoon" name="sessions" value="afternoon">
+        <label class="form-check-label" for="session-afternoon">Afternoon Session</label>
+    </div>
+
+    <div>
+        <br>
+        <label class="form-label" for="special-request">Enter any special requests here: </label>
+        <textarea class="form-control" id="special-request" name="special request" optional></textarea>
+    </div>
+
+  <!-- Use the bootstrap website to see the user manual-->
+      <br>
+      <input class="btn btn-success" type="submit" value="Submit">
+
+      </form>
+    </div> <!--End of form div-->
+  </div>
+    
+</body>
+</html>
