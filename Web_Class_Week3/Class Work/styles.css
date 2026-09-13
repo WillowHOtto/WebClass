@@ -1,0 +1,18 @@
+h1 {
+    border: 1px black dashed;
+}
+
+h2 {
+    color: hotpink;
+    text-decoration: underline;
+}
+
+#sun-text {
+    color: yellow;
+    background-color: black;
+    text-decoration: underline;
+}
+
+.known-weather{
+    font-family: "courier new", monospace;
+}

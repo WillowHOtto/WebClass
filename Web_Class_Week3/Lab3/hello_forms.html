@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello Forms</title>
+</head>
+<body>
+
+  <form>
+<p>Enter your name:</p>
+<input>
+
+<br>
+<label for="user-name">Name:</label>
+<input type="text" id="user-name" name="user-name">
+
+<br>
+<textarea rows="4" cols="50">default text here</textarea>
+
+<br>
+<select>
+  <option>
+    one
+  </option>
+  <option>
+    two</option>
+</select>
+
+<br>
+<label>Delivery or pickup?</label>
+<!-- Name makes it so you can only select one item
+ Checked attribute makes it default option-->
+<input id="delivery-type-delivery" name="delivery-type" type="radio" checked><label for="delivery-type-delivery">Delivery</label>
+<input id="delivery-type-pickup" name="delivery-type" type="radio"><label for="delivery-type-pickup">Pickup</label>
+
+<br>
+<label>Today or Later?</label>
+<input id="delivery-now" name="delivery-time" type="radio"><label for="delivery-now">Today</label>
+<input id="delivery-later" name="delivery-time" type="radio"><label for="delivery-later">Later</label>
+
+<br>
+<input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

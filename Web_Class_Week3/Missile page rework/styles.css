@@ -1,0 +1,22 @@
+body {
+  font-family: "Henny Penny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  color : #000000;
+  text-align : center;
+}
+
+#real-alert {
+    color: rgb(187, 0, 0); 
+    border : 1px rgb(187, 0, 0) solid;
+    text-transform : uppercase;
+    font-weight : bold;
+}
+
+#test-only {
+    color: rgb(0, 0, 187); 
+    border : 1px rgb(0, 0, 187) solid;
+    text-transform : uppercase;
+    font-weight : bold;
+    
+}

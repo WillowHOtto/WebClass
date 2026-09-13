@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Feedback Forms</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caacupe+One&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<!-- Add your styles after bootstrap-->
+  <link href="feedback-styles.css" rel="stylesheet">
+
+</head>
+<body class="m-3">
+
+  <div class="bg-dark-subtle mb-3 p-3 rounded-5 text-center">
+  <h1>Please provide feedback. You may do so anonymously.</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6"> <!--column stacking using md-6-->
+      <h2>Instructions</h2>
+      <p>As one of our students, your thoughts, feedback and comments are important to us.</p>
+       <p> Please send them using this form. </p>
+       <p> If you would like us to follow up with you, include your contact information.</p>
+    </div> <!--End of instructions div-->
+
+  <div class="col">
+    <form class="m-2 p-2">
+
+      <label class="form-label" for="user-name">Enter your name: </label>
+      <input class="form-control" id="user-name" name="user-name" optional type="text">
+
+      <br>
+      <label class="form-label" for="user-email">Enter your email: </label>
+      <input class="form-control" id="user-email" name="user-email" optional type="email">
+
+      <br>
+      <label class="form-label" for="comment">Enter your comment: </label>
+      <textarea class="form-control" id="comment" name="comment" required></textarea>
+
+      <br>
+        <label class="form-label mx-2">Are you a current student?</label>
+      <br>
+
+      <div class="form-check">
+        <input class="form-check-input" id="current-student" name="student-status" type="radio">
+        <label class="form-check-label" for="current-student">Yes</label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" id="non-current-student" name="student-status" type="radio">
+        <label class="form-check-label" for="non-current-student">No</label>
+      </div>
+
+  <!-- Use the bootstrap website to see the user manual-->
+      <br>
+      <input class="btn btn-success" type="submit" value="Submit">
+
+      </form>
+    </div> <!--End of form div-->
+  </div>
+</body>
+</html>
