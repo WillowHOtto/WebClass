@@ -1,0 +1,333 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blood Supply Checker</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #b71c1c;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            text-align: center;
+            color: #b71c1c;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: white;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #b71c1c;
+            box-shadow: 0 0 5px rgba(183, 28, 28, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #b71c1c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #8e0000;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #fbe9e7;
+            border-left: 5px solid #b71c1c;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .result h3 {
+            margin-top: 0;
+            color: #b71c1c;
+        }
+
+        #blood-group-display {
+            font-size: 32px;
+            font-weight: bold;
+            color: #b71c1c;
+        }
+
+        #units-available {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            header h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Hospital Blood Supply</h1>
+        <p>Check the current availability of donated blood</p>
+    </header>
+
+    <main class="container">
+
+        <div class="card">
+
+            <h2>Blood Supply Checker</h2>
+
+            <p class="card-description">
+                Select a blood type below to see how many units are currently available.
+            </p>
+
+            <div class="form-group">
+
+                <label for="blood-group-abo">
+                    ABO Blood Group
+                </label>
+
+                <select id="blood-group-abo">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="AB">AB</option>
+                    <option value="O">O</option>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="blood-group-rh">
+                    Rh Factor
+                </label>
+
+                <select id="blood-group-rh">
+                    <option value="positive">Positive (+)</option>
+                    <option value="negative">Negative (-)</option>
+                </select>
+
+            </div>
+
+            <button id="get-blood-units-button">
+                Check Blood Availability
+            </button>
+
+            <div class="result">
+
+                <h3>Blood Supply Result</h3>
+
+                <p>
+                    Blood Group:
+                    <span id="blood-group-display">--</span>
+                </p>
+
+                <p>
+                    Units Available:
+                    <span id="units-available">--</span>
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        Hospital Blood Supply System
+    </footer>
+
+
+    <script>
+
+        // Get the ABO blood group selected by the user
+        let bloodGroupAboInput =
+            document.querySelector('#blood-group-abo');
+
+        // Get the Rh factor selected by the user
+        let bloodGroupRhInput =
+            document.querySelector('#blood-group-rh');
+
+        // Get the button
+        let getBloodUnitsButton =
+            document.querySelector('#get-blood-units-button');
+
+        // Get the elements where we will display the results
+        let bloodGroupDisplay =
+            document.querySelector('#blood-group-display');
+
+        let unitsAvailableDisplay =
+            document.querySelector('#units-available');
+
+
+        // Run this code when the user clicks the button
+        getBloodUnitsButton.addEventListener('click', function () {
+
+            // Get the selected ABO blood group
+            let abo = bloodGroupAboInput.value;
+
+            // Get the selected Rh factor
+            let rh = bloodGroupRhInput.value;
+
+
+            // Convert the Rh value into + or -
+            let rhSymbol;
+
+            if (rh === 'positive') {
+                rhSymbol = '+';
+            } else {
+                rhSymbol = '-';
+            }
+
+
+            // Combine the ABO and Rh values
+            // For example: A + positive = A+
+            let bloodGroup = abo + rhSymbol;
+
+
+            // Show the blood group the user selected
+            bloodGroupDisplay.textContent = bloodGroup;
+
+            // Display a temporary message while the API is loading
+            unitsAvailableDisplay.textContent = 'Loading...';
+
+
+            // Connect to the blood supply API
+            fetch(
+                `https://blood-group-api.wl.r.appspot.com/${bloodGroup}`
+            )
+
+                // Check the response from the API
+                .then(function (response) {
+
+                    if (!response.ok) {
+                        throw new Error(
+                            'Unable to retrieve blood supply'
+                        );
+                    }
+
+                    return response.json();
+
+                })
+
+
+                // Process the API response
+                .then(function (data) {
+
+                    // Display the number of available units
+                    unitsAvailableDisplay.textContent = data.units;
+
+                })
+
+
+                // Handle errors
+                .catch(function (error) {
+
+                    console.error(error);
+
+                    unitsAvailableDisplay.textContent =
+                        'Unable to retrieve blood supply';
+
+                });
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
