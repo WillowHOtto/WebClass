@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 PART 3</title>
+</head>
+<body>
+
+    <button> Click here! </button>
+
+
+    
+    <!--  script should be put after the html elements so it is read in order  -->
+    
+<script>
+
+    let button = document.querySelector('button')
+
+    
+
+    button.addEventListener('click', function() {
+        alert('You clicked the button!')
+       // button.innerHTML = 'You clicked the button!'
+       // button.style.backgroundColor = 'red'
+       button.remove()
+    })
+
+</script>
+    
+</body>
+</html>
