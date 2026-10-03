@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Club Membership</title>
+
+  <style>
+
+    input {
+      width: 100%;
+      padding: 5px;
+      margin: 5px 5px 5px 0px;
+      box-sizing: border-box;
+
+    }
+
+  </style>
+
+</head>
+<body>
+
+<h1>Student Club Roster</h1>
+
+<h2>Add Students</h2>
+
+<label for="student-name">Student Name</label><input id="student-name" name="student-name">
+<br>
+<label for="student-id">Student ID</label><input id="student-id" name="student-id">
+<br>
+<label for="student-gpa">Student GPA</label><input id="student-gpa" name="student-gpa" type="number">
+<br>
+<button id="add-student">Add Student</button>
+
+<h2>Student List</h2>
+
+<p>There are
+  <span id="student-count">
+          <!-- use JavaScript to count the number of students, and show here -->
+        </span>
+  student(s) in the club.</p>
+
+<ul id="student-list">
+  <!-- use JavaScript to create li elements  -->
+</ul>
+
+<script>
+
+let studentNameInput = document.querySelector('#student-name')
+let studentIdInput = document.querySelector('#student-id')
+let studentGpaInput = document.querySelector('#student-gpa')
+let addButton = document.querySelector('#add-student')
+let studentList = document.querySelector('#student-list')
+let studentCount = document.querySelector('#student-count')
+
+let elementsInList = 0
+
+// Show 0 on page load
+studentCount.innerHTML = elementsInList
+
+addButton.addEventListener('click', function() {
+
+    // Read the name
+    let name = studentNameInput.value
+    if (name.length == 0) {
+        alert('Enter a student name')
+        return
+    }
+
+    // Read the id
+    let id = studentIdInput.value
+    if (id.length == 0) {
+        alert('Enter a student ID')
+        return
+    }
+
+    // Read the gpa
+    let gpa = Number(studentGpaInput.value)
+    if (studentGpaInput.value.length == 0 || isNaN(gpa) || gpa < 0 || gpa > 4) {
+        alert('Enter GPA between 0 and 4')
+        return
+    }
+
+    // Create a new li element
+    let newListItem = document.createElement('li')
+
+    // Set its innerHTML using a template string
+    newListItem.innerHTML = `${name}, id: ${id}, GPA ${gpa}`
+
+    // Add the new li as a child of the ul element
+    studentList.appendChild(newListItem)
+
+    // Clear the inputs
+    studentNameInput.value = ''
+    studentIdInput.value = ''
+    studentGpaInput.value = ''
+
+    // Update the count
+    elementsInList++
+    studentCount.innerHTML = elementsInList
+})
+
+</script>
+
+</body>
+</html>
