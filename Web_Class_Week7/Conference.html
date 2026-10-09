@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Registration</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- Personal styles AFTER bootstrap -->
+    <link href="conference-styles.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Irish Grover', cursive;
+        }
+    </style>
+</head>
+<body class="m-4 p-3">
+
+    <div class="bg-light mb-3 p-3 rounded-5 text-center">
+        <h1>Welcome to the conference registration form! Please fill out the information below.</h1>
+    </div>
+
+    <div class="col">
+        <form id="conference-form" class="m-2 p-2">
+
+            <div>
+                <label class="form-label" for="user-name">Enter your name: </label>
+                <input class="form-control" id="user-name" name="user-name" maxlength="70" type="text">
+            </div>
+
+            <div>
+                <br>
+                <label class="form-label" for="user-email">Enter your email: </label>
+                <input class="form-control" id="user-email" name="user-email" type="email">
+            </div>
+
+            <div>
+                <br>
+                <label class="form-label" for="user-password">Enter your password: </label>
+                <input class="form-control" id="user-password" name="user-password" type="password">
+            </div>
+
+            <div>
+                <br>
+                <label class="form-option" for="tshirt-size">Select your t-shirt size: </label>
+                <select class="form-select" id="tshirt-size" name="tshirt-size">
+                    <option value="">Select a size</option>
+                    <option value="S">Small</option>
+                    <option value="M">Medium</option>
+                    <option value="L">Large</option>
+                </select>
+            </div>
+
+            <br>
+            <div>
+                <label class="form-label" for="date-of-birth">Enter your date of birth: </label>
+                <input class="form-control" id="date-of-birth" name="date-of-birth" type="date">
+            </div>
+
+            <div>
+                <br>
+                <label class="form-label mx-2">Receive email updates?</label>
+                <br>
+
+                <div class="form-check">
+                    <input class="form-check-input" id="yes-emails" name="email-updates" type="radio">
+                    <label class="form-check-label" for="yes-emails">Yes</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" id="no-emails" name="email-updates" type="radio">
+                    <label class="form-check-label" for="no-emails">No</label>
+                </div>
+            </div>
+
+            <p class="form-label">Select the sessions you will attend:</p>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="session-morning" name="sessions" value="morning">
+                <label class="form-check-label" for="session-morning">Morning Session</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="session-afternoon" name="sessions" value="afternoon">
+                <label class="form-check-label" for="session-afternoon">Afternoon Session</label>
+            </div>
+
+            <div>
+                <br>
+                <label class="form-label" for="special-request">Enter any special requests here: </label>
+                <textarea class="form-control" id="special-request" name="special-request"></textarea>
+            </div>
+
+            <br>
+            <div id="form-error" class="alert alert-danger mt-3" role="alert" hidden></div>
+            <button class="btn btn-success" id="submit-registration" type="button">Submit</button>
+
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById("conference-form");
+        const submitButton = document.getElementById("submit-registration");
+        const errorMessage = document.getElementById("form-error");
+
+        submitButton.addEventListener("click", () => {
+            errorMessage.hidden = true;
+
+            // Read all values
+            const name = document.getElementById("user-name").value.trim();
+            const email = document.getElementById("user-email").value.trim();
+            const password = document.getElementById("user-password").value;
+            const tShirtSize = document.getElementById("tshirt-size").value;
+            const dateOfBirth = document.getElementById("date-of-birth").value;
+            const emailChoiceMade =
+                document.getElementById("yes-emails").checked ||
+                document.getElementById("no-emails").checked;
+            const specialRequests = document.getElementById("special-request").value.trim();
+
+            // Gather sessions
+            const sessionsAttended = [];
+            if (document.getElementById("session-morning").checked) {
+                sessionsAttended.push("morning");
+            }
+            if (document.getElementById("session-afternoon").checked) {
+                sessionsAttended.push("afternoon");
+            }
+
+            // Validate required text/select/date fields
+            if (!name || !email || !password || !tShirtSize || !dateOfBirth) {
+                errorMessage.textContent = "Please fill in all required fields.";
+                errorMessage.hidden = false;
+                return;
+            }
+
+            // Validate email radio choice
+            if (!emailChoiceMade) {
+                errorMessage.textContent = "Please choose whether to receive email updates.";
+                errorMessage.hidden = false;
+                return;
+            }
+
+            // Validate at least one session checkbox
+            if (sessionsAttended.length === 0) {
+                errorMessage.textContent = "Please select at least one session to attend.";
+                errorMessage.hidden = false;
+                return;
+            }
+
+            // Build the registration object
+            const registration = {
+                name: name,
+                password: password,
+                email: email,
+                tShirtSize: tShirtSize,
+                dateOfBirth: dateOfBirth,
+                receiveEmailUpdates: document.getElementById("yes-emails").checked,
+                sessionsAttended: sessionsAttended,
+                specialRequests: specialRequests
+            };
+
+            console.log(registration);
+        });
+    </script>
+</body>
+</html>
