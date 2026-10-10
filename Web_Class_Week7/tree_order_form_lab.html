@@ -69,9 +69,11 @@
     let homeownerHouseNumberInput = document.querySelector('#homeowner-house-number')
     let homeownerStreetNameInput = document.querySelector('#homeowner-street-name')
     let treeTypeSelect = document.querySelector('#tree-type')
+    let homeownerCityInput = document.querySelector('#city')
+    let homeownerZipInput = document.querySelector('#zipcode')
 
-    // TODO create a variable for city input element
-    // TODO create a variable for zip code input element
+    // TODO create a variable for city input element COMPLETE
+    // TODO create a variable for zip code input element COMPLETE 
     
     let submitButton = document.querySelector('#submit-order')
 
@@ -83,37 +85,50 @@
         let houseNumber = homeownerHouseNumberInput.value
         let streetName = homeownerStreetNameInput.value
         let treeType = treeTypeSelect.value
+        let city = homeownerCityInput.value  // TODO get the value from the input#city
+        let zipCode = homeownerZipInput.value // TODO get the value from the input#zipcode
 
-        // TODO get the value from the input#city
-        // TODO get the value from the input#zipcode
+        function isMinnesotaZip(zipCode) {
+            let zipCodeNumber = Number(zipCode)
 
-        // TODO Validate that all six input and select elements have been completed
-        //  - check they all have a value
+            if (zipCodeNumber >= 55001 && zipCodeNumber <= 56763) {
+                return true
+            } else {
+                return false
+            }
+        }
 
-        // TODO Validate the zipcode is in the range 55001 and 56763. 
-        // to check that the zip code is in Minnesota.
-        // Make sure your script doesn't accept non-numeric input for the zip code. 
-
-        // Optional extra: add the class .error to any inputs with an error (and only inputs with an error)
-        // to give the user visual feedback for which inputs need to be fixed or completed. 
-        // There's a style for input.error and select.error defined in the styles (in the head)
-        // which will be applied if you give the class .error to any elements on the page. 
-        // Make sure you remove this class when the form is completed correctly.
+        // This section was worked on with a DeepSeek agent acting as a tutor for javascript. 
 
         let errors = []
-        
-        // If a form element has not been completed, or if the data is not valid, 
-        // add an error message to the errors array. (Hint: use push to add to the end of the array)
-        // Add one error message for each problem with the form. 
 
-        
-        // TODO - If there are any errors after checking all of the input elements, 
-        // display an alert with all of the error messages. (Hint: use join)
-        // and then return from this function to prevent further processing 
+        if (name == '') {
+            errors.push('Enter your name.')
+        }
+        if (houseNumber == '') {
+            errors.push('Enter your house number.')
+        }
+        if (streetName == '') {
+            errors.push('Enter your street name.')
+        }
+        if (city == '') {
+            errors.push('Enter your city.')
+        }
+        if (zipCode == '') {
+            errors.push('Enter your ZIP code.')
+        } else if (!isMinnesotaZip(zipCode)) {
+            errors.push('Enter a ZIP code between 55001 and 56763.')
+        }
+        if (!treeType) {
+            errors.push('Choose a tree type.')
+        }
 
+        if (errors.length > 0) {
+            orderSummaryParagraph.textContent = errors.join(' ')
+            return
+        }
 
-        // TODO - If there are no errors, use a template string to display an order 
-        // summary in the order summary paragraph.
+        orderSummaryParagraph.textContent = `Order for ${name}: ${treeType} tree, ${houseNumber} ${streetName}, ${city}, Minnesota ${zipCode}.`
 
         
     })
