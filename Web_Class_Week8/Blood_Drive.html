@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Blood Reserves</h1>
+
+    <label for="blood-group-abo">ABO Blood Group</label>
+    <select id="blood-group-abo">
+        <option value="A">A</option>
+        <option value="AB">AB</option>
+        <option value="B">B</option>
+        <option value="O">O</option>
+    </select>
+
+    <br> 
+
+    <label for="blood-group-rh">Rh Factor</label>
+    <select id="blood-group-rh">
+        <option value="positive">Positive</option>
+        <option value="negative">Negative</option>
+    </select>
+
+    <br>
+    
+    <button id="get-blood-units-button">Get blood units</button>
+
+    <div id="display-blood-units">
+        <p id="blood-result"></p>
+    </div>
+    
+    <script>
+            //User input elements
+        let bloodGroupAboInput = document.querySelector('#blood-group-abo')
+        let bloodGroupRhInput = document.querySelector('#blood-group-rh')
+
+
+            //button, add event listener
+        let getBloodUnitsButton = document.querySelector('#get-blood-units-button')
+
+            //Used to display results to the user
+        let bloodResult = document.querySelector('#blood-result')
+
+        getBloodUnitsButton.addEventListener('click', function() {
+
+            // TODO finish this code to make a request to the blood supply API 
+            // The API endpoint is at https://blood-group-api.wl.r.appspot.com/
+            // request to get the number of units for the blood type entered 
+            // display the blood group e.g. A+ or B- in the #blood-group-display element
+            // display the number of units for that blood group in the units-available element 
+
+            //Question 1 - How to make a request to the API and ask for the specific blood type
+            //Question 2 - How is the data returned? How do we get the info from JSON to display for users?
+            //Questions 3 - How to handle errors ? 
+
+            let aboGroupValue = bloodGroupAboInput.value
+            let rhFactorValue = bloodGroupRhInput.value
+            console.log(aboGroupValue, rhFactorValue)
+
+            //example API url
+            //https://blood-group-api.wl.r.appspot.com/api/blood_units_by_group?group=Apositive The Apositive area can change to be for specific items
+
+            let bloodType = aboGroupValue + rhFactorValue //example "Apositive" or "ABnegative"
+
+            // show selected bloodtype by clicking console log URL, does it match what you selected? YES!
+            let apiRequestURL = 'https://blood-group-api.wl.r.appspot.com/api/blood_units_by_group?group=' + bloodType
+            console.log(apiRequestURL)
+
+            fetch(apiRequestURL)
+                .then( response => response.json() ) // Get the data from the API and bring into the console log
+                .then( jsonData => {
+                    //console.log(jsonData)
+                    let results = jsonData.results
+                    console.log(results)
+
+                    let availability = results.blood_availability
+                    console.log(availability) 
+
+                    let unitsAvailable = availability.units_available
+                    console.log(unitsAvailable)
+
+                    let groupName = availability.group_name
+                    console.log(groupName)
+
+                    bloodResult.innerHTML = `There ${unitsAvailable == 1 ? 'is' : 'are'} ${unitsAvailable} ${unitsAvailable == 1 ? 'unit' : 'units'} of ${groupName} blood available.`
+
+
+                    // TODO handle errors - see cideos for example - display error message
+                    // Either alert or create a new HTML element to show the error
+                    
+                })
+
+            // Show the available units on the page
+
+
+
+        })
+
+    </script>
+</body>
+</html>

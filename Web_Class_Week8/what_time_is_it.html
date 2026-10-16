@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Interval</title>
+</head>
+    
+<body>
+    <h1>What time is it?</h1>
+    <p id="time"></p>
+
+
+    <script>
+
+        let timeElement = document.querySelector('#time')
+
+        setInterval( () => {
+            let date = Date()
+            timeElement.innerHTML = date
+        }, 1000)
+
+        // Converted into an arrow function
+
+
+// https://api.worldbank.org/v2/country/br?format=json
+// change br to the country code of your choice (br is Brazil, it can change into us for United States)
+    </script>
+
+
+    
+</body>
+</html>
